@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Muniz — Desenvolvedor Front-End</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F5F0;
+    --paper-dim:#ECEEE7;
+    --ink:#16211C;
+    --ink-soft:#4A5750;
+    --teal:#0E6E66;
+    --gold:#C68A2E;
+    --line:#D6D9D0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---- Header ---- */
+  header{
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:600;
+  }
+  nav{display:flex; gap:28px;}
+  nav a{
+    font-size:14px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav a:hover, nav a:focus-visible{color:var(--teal); border-color:var(--teal);}
+  .nav-toggle{display:none;}
+
+  /* ---- Hero ---- */
+  .hero{padding:88px 0 80px;}
+  .hero .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--teal);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(34px, 5.4vw, 58px);
+    line-height:1.14;
+    max-width:14ch;
+    letter-spacing:-0.01em;
+  }
+  .hero .lede{
+    margin-top:26px;
+    max-width:54ch;
+    font-size:18px;
+    color:var(--ink-soft);
+  }
+  .hero .actions{
+    margin-top:36px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 20px;
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn:hover{background:var(--ink); color:var(--paper);}
+  .btn.primary:hover{background:var(--teal); border-color:var(--teal);}
+
+  /* ---- Section shell ---- */
+  section{padding:72px 0; border-top:1px solid var(--line);}
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(24px, 3vw, 32px);
+    margin-bottom:28px;
+    max-width:20ch;
+  }
+
+  /* ---- Sobre ---- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+  }
+  .about-grid p{color:var(--ink-soft); max-width:52ch;}
+  .about-grid p + p{margin-top:16px;}
+  .about-stats{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    font-weight:500;
+  }
+  .stat span{font-size:13px; color:var(--ink-soft);}
+
+  /* ---- Habilidades ---- */
+  .skill-panel{border-top:1px solid var(--line);}
+  .skill-row{
+    display:grid;
+    grid-template-columns:1fr 2.4fr;
+    gap:24px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .skill-row .group{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--teal);
+  }
+  .skill-row .items{color:var(--ink-soft); font-size:15px;}
+
+  /* ---- Projetos ---- */
+  .project{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:20px;
+    align-items:start;
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:first-of-type{border-top:1px solid var(--line);}
+  .project .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    padding-top:4px;
+  }
+  .project h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:19px;
+    margin-bottom:6px;
+  }
+  .project p{color:var(--ink-soft); font-size:15px; max-width:48ch;}
+  .project .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    display:inline-block;
+    margin-top:10px;
+  }
+  .project a.view{
+    font-size:14px;
+    text-decoration:none;
+    color:var(--ink);
+    white-space:nowrap;
+    border-bottom:1px solid var(--ink);
+    padding-top:4px;
+    height:fit-content;
+  }
+  .project a.view:hover{color:var(--teal); border-color:var(--teal);}
+  .project.placeholder{opacity:.7;}
+  .project.placeholder .tag{color:var(--ink-soft);}
+
+  /* ---- Contato ---- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-grid p{color:var(--ink-soft); max-width:44ch;}
+  .contact-list{list-style:none; margin-top:24px;}
+  .contact-list li{
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    font-size:15px;
+  }
+  .contact-list li:last-child{border-bottom:1px solid var(--line);}
+  .contact-list span:first-child{color:var(--ink-soft);}
+  .contact-list a{text-decoration:none; font-weight:500;}
+  .contact-list a:hover{color:var(--teal);}
+
+  footer{
+    padding:28px 0 48px;
+    font-size:13px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width: 720px){
+    nav{display:none;}
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .about-stats{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:24px; flex-direction:row; flex-wrap:wrap;}
+    .project{grid-template-columns:auto 1fr; row-gap:10px;}
+    .project a.view{grid-column:2; justify-self:start;}
+    .hero{padding:56px 0 56px;}
+    section{padding:52px 0;}
+  }
+
+  :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Eduardo Muniz</div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Recife, PE — Desenvolvedor Front-End</div>
+    <h1>Passei anos cuidando de pessoas. Agora construo as telas com que elas interagem.</h1>
+    <p class="lede">Técnico em Enfermagem e estudante de Física migrando para o front-end. Trago disciplina de laboratório e atenção a detalhes clínicos para escrever HTML, CSS e JavaScript com cuidado.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:eduardo.mviana@ufrpe.br">Enviar e-mail</a>
+      <a class="btn" href="https://github.com/cratosfdb" target="_blank" rel="noopener">Ver GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="label">01 — Sobre</div>
+    <h2>De plantão em plantão até o primeiro deploy</h2>
+    <div class="about-grid">
+      <div>
+        <p>Comecei na área da saúde como técnico em Enfermagem, onde aprendi a trabalhar sob pressão, seguir protocolos com precisão e me comunicar com clareza em equipes multidisciplinares. Enquanto isso, cursava Física na UFRPE — e foi ali, entre equações e lógica, que o interesse por programação apareceu.</p>
+        <p>Hoje estudo HTML5, CSS3 e JavaScript por conta própria, com foco em construir interfaces web funcionais e bem cuidadas. Estou em transição de carreira e buscando minha primeira oportunidade como desenvolvedor front-end.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><b>Enfermagem</b><span>Formação técnica</span></div>
+        <div class="stat"><b>Física</b><span>UFRPE, em andamento</span></div>
+        <div class="stat"><b>PT / EN</b><span>Nativo / Fluente</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <div class="label">02 — Habilidades</div>
+    <h2>O que já sei usar</h2>
+    <div class="skill-panel">
+      <div class="skill-row">
+        <div class="group">Front-end</div>
+        <div class="items">HTML5, CSS3, JavaScript</div>
+      </div>
+      <div class="skill-row">
+        <div class="group">Ferramentas</div>
+        <div class="items">Pacote Office (Word, Excel), organização e controle de planilhas</div>
+      </div>
+      <div class="skill-row">
+        <div class="group">Trabalho</div>
+        <div class="items">Trabalho em equipe, liderança, resolução de problemas, pensamento criativo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="label">03 — Projetos</div>
+    <h2>No que estou trabalhando</h2>
+
+    <div class="project placeholder">
+      <div class="num">01</div>
+      <div>
+        <h3>Próximo projeto</h3>
+        <p>Este espaço é para o primeiro projeto publicado no GitHub — em construção.</p>
+        <span class="tag">em breve</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="project">
+      <div class="num">02</div>
+      <div>
+        <h3>Este portfólio</h3>
+        <p>Página que você está vendo agora: HTML e CSS escritos do zero, sem frameworks, com foco em layout responsivo.</p>
+        <span class="tag">HTML · CSS</span>
+      </div>
+      <a class="view" href="https://github.com/cratosfdb" target="_blank" rel="noopener">Ver código →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="label">04 — Contato</div>
+    <h2>Vamos conversar</h2>
+    <div class="contact-grid">
+      <p>Estou disponível para oportunidades de estágio ou posição júnior em desenvolvimento front-end. Respondo rápido por e-mail ou WhatsApp.</p>
+      <ul class="contact-list">
+        <li><span>E-mail</span><a href="mailto:eduardo.mviana@ufrpe.br">eduardo.mviana@ufrpe.br</a></li>
+        <li><span>Telefone</span><a href="tel:+5581993126325">(81) 99312-6325</a></li>
+        <li><span>GitHub</span><a href="https://github.com/cratosfdb" target="_blank" rel="noopener">cratosfdb</a></li>
+        <li><span>Local</span><span>Recife - PE</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+    <span>Eduardo Muniz</span>
+    <span>Construído com HTML e CSS puro</span>
+  </div>
+</footer>
+
+</body>
+</html>
