@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eduardo Muniz · Front-end e Física</title>
+<meta name="description" content="Eduardo Muniz, estudante de Física na UFRPE e desenvolvedor front-end em formação, em busca de estágio em TI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--space:#0b1020;--space2:#141b34;--bone:#eef0f4;--ink:#10172b;--mute:#5a6483;--blue:#4d6bff;--amber:#ffb84d;--line:#d9dde8;
+--display:"Bricolage Grotesque",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bone);color:var(--ink);line-height:1.65;font-size:1.0625rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+.top{background:var(--space);color:#fff}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+nav strong{font-family:var(--display);font-size:1.15rem}
+nav ul{display:flex;gap:1.5rem;list-style:none;padding:0}
+nav a{text-decoration:none;color:#c9d1ec}
+nav a:hover{color:#fff;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:6px}
+
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 4.5rem}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6.5vw,4.75rem);line-height:1;letter-spacing:-.03em}
+.hero .sub{margin-top:1.25rem;font-size:1.2rem;color:#cdd5ee;max-width:30rem}
+.hero .sub b{color:#fff;font-weight:600}
+.cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
+.btn{padding:.8rem 1.4rem;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--amber);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--amber);color:var(--space)}
+.btn.g{color:#fff}
+
+.sim{background:var(--space2);border:1px solid #2a3560;border-radius:16px;overflow:hidden}
+.sim canvas{display:block;width:100%;aspect-ratio:1/1;cursor:crosshair;touch-action:manipulation}
+.ctrl{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;padding:.85rem 1rem;border-top:1px solid #2a3560;font-size:.9rem;color:#c3cbe6}
+.ctrl label{display:flex;gap:.6rem;align-items:center}
+.ctrl input{accent-color:var(--amber);width:7.5rem}
+.ctrl button{background:transparent;color:#fff;border:1px solid #4a5a9a;border-radius:8px;padding:.3rem .8rem;cursor:pointer;font:inherit}
+.ctrl button:hover{border-color:var(--amber)}
+.hint{width:100%;color:#98a3cc;font-size:.85rem}
+
+section{padding:4.5rem 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin-bottom:1.5rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about p{max-width:36rem}.about p+p{margin-top:1rem}
+.stack{display:grid;gap:1.25rem}
+.stack h3{font-family:var(--display);font-size:1.05rem;margin-bottom:.4rem}
+.tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.tags span{font-size:.85rem;padding:.25rem .7rem;border-radius:8px;background:#fff;border:1px solid var(--line)}
+.tags span.l{border-style:dashed;color:var(--mute)}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.proj{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;gap:.8rem}
+.proj.feat{grid-column:1/-1;background:var(--space);color:#fff;border-color:var(--space)}
+.proj.feat p,.proj.feat li{color:#cdd5ee}
+.proj h3{font-family:var(--display);font-size:1.4rem}
+.proj p,.proj li{color:var(--mute)}
+.proj ul{padding-left:1.1rem}
+.proj .tags span{background:transparent;border-color:#4a5a9a;color:inherit}
+.proj:not(.feat) .tags span{border-color:var(--line)}
+.proj .tags{margin-top:auto}
+.proj a.l2{font-weight:600;text-underline-offset:4px}
+.proj.soon{border-style:dashed;background:transparent}
+
+.contact a.big{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,4vw,2.4rem);text-decoration-color:var(--amber);text-decoration-thickness:4px;text-underline-offset:8px;word-break:break-word}
+.contact ul{list-style:none;padding:0;margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+footer{padding:2rem 0;color:var(--mute);font-size:.9rem}
+
+@media(max-width:820px){.hero,.two{grid-template-columns:1fr}.hero{padding-bottom:3rem}nav ul{gap:1rem;font-size:.95rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <nav aria-label="Principal">
+   <strong>Eduardo Muniz</strong>
+   <ul><li><a href="#projetos">Projetos</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#contato">Contato</a></li></ul>
+  </nav>
+
+  <div class="hero">
+   <div>
+    <h1>Física na cabeça, front-end nas mãos.</h1>
+    <p class="sub"><b>Estudante de Física na UFRPE</b> e desenvolvedor front-end em formação. Busco estágio em TI para transformar raciocínio lógico em interfaces que funcionam.</p>
+    <div class="cta">
+     <a class="btn p" href="#projetos">Ver projetos</a>
+     <a class="btn g" href="https://github.com/EduardoMuniz-Dev" target="_blank" rel="noopener">GitHub</a>
+    </div>
+   </div>
+
+   <div class="sim">
+    <canvas id="sim" aria-label="Simulação de órbitas ao redor de uma estrela. Clique para lançar um planeta." role="img"></canvas>
+    <div class="ctrl">
+     <label>Gravidade <input type="range" id="g" min="0.4" max="2" step="0.05" value="1"></label>
+     <button type="button" id="pause">Pausar</button>
+     <button type="button" id="reset">Reiniciar</button>
+     <span class="hint">Clique na simulação para lançar um planeta em órbita.</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</header>
+
+<main class="wrap">
+
+ <section id="projetos">
+  <h2>Projetos</h2>
+  <div class="projects">
+   <article class="proj feat">
+    <h3>Simulador de órbitas</h3>
+    <p>A simulação no topo desta página. Cada planeta obedece à lei da gravitação de Newton, calculada quadro a quadro.</p>
+    <ul>
+     <li>Gravidade ajustável em tempo real: aumente ou diminua e veja as órbitas virarem elipses ou escaparem.</li>
+     <li>Clique para lançar planetas com velocidade orbital calculada na hora.</li>
+     <li>JavaScript puro e Canvas, sem bibliotecas.</li>
+    </ul>
+    <div class="tags"><span>JavaScript</span><span>Canvas</span><span>Física newtoniana</span></div>
+    <a class="l2" href="https://github.com/EduardoMuniz-Dev/PortFolio-" target="_blank" rel="noopener">Ver código no GitHub</a>
+   </article>
+
+   <article class="proj">
+    <h3>Este portfólio</h3>
+    <p>Página responsiva e acessível, com navegação por teclado e respeito a quem desativa animações.</p>
+    <div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+    <a class="l2" href="https://github.com/EduardoMuniz-Dev/PortFolio-" target="_blank" rel="noopener">Ver código</a>
+   </article>
+
+   <!-- TODO: troque pelo seu próximo projeto real (lista de tarefas, app de clima com API, etc.) -->
+   <article class="proj soon">
+    <h3>Próximo projeto</h3>
+    <p>Em desenvolvimento: um app que consome uma API pública.</p>
+    <div class="tags"><span>JavaScript</span><span>API</span></div>
+   </article>
+  </div>
+ </section>
+
+ <section id="sobre" class="about">
+  <h2>Sobre</h2>
+  <div class="two">
+   <div>
+    <!-- TODO: ajuste o texto com a sua voz -->
+    <p>Cursando Licenciatura em Física na Universidade Federal Rural de Pernambuco, aprendi a quebrar problemas grandes em partes pequenas e a testar cada hipótese. É o mesmo método que uso para programar.</p>
+    <p>Construo com HTML5, CSS3 e JavaScript e uso IA como apoio para aprender mais rápido, lendo e entendendo todo código que entra nos meus projetos.</p>
+    <p>Moro em Recife e estou aberto a estágio presencial, híbrido ou remoto.</p>
+   </div>
+   <div class="stack">
+    <div><h3>Uso no dia a dia</h3><div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Git e GitHub</span></div></div>
+    <div><h3>Estudando agora</h3><div class="tags"><span class="l">Consumo de APIs</span><span class="l">React</span><span class="l">Acessibilidade web</span></div></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="contato" class="contact">
+  <h2>Contato</h2>
+  <!-- TODO: coloque seu e-mail e LinkedIn reais -->
+  <a class="big" href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a>
+  <ul>
+   <li><a href="https://github.com/EduardoMuniz-Dev" target="_blank" rel="noopener">GitHub</a></li>
+   <li><a href="https://www.linkedin.com/in/seu-perfil" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul>
+ </section>
+</main>
+
+<footer><div class="wrap">© <span id="ano"></span> Eduardo Muniz</div></footer>
+
+<script>
+const cv=document.getElementById('sim'),ctx=cv.getContext('2d');
+const GM=768000; let G=1,W=0,H=0,bodies=[],paused=false;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function resize(){const d=devicePixelRatio||1,r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);}
+function spawn(dx,dy){
+  const r=Math.hypot(dx,dy); if(r<30)return;
+  const v=Math.sqrt(G*GM/r);
+  if(bodies.length>=14)bodies.shift();
+  bodies.push({x:dx,y:dy,vx:-dy/r*v,vy:dx/r*v,t:[]});
+}
+function reset(){bodies=[];const s=Math.min(W,H)/2;[.3,.5,.72].forEach((k,i)=>{const a=i*2.1;spawn(Math.cos(a)*s*k,Math.sin(a)*s*k)});}
+function step(dt){
+  for(const b of bodies){
+    const r2=b.x*b.x+b.y*b.y,r=Math.sqrt(r2),a=G*GM/r2;
+    b.vx-=a*b.x/r*dt;b.vy-=a*b.y/r*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;
+  }
+  bodies=bodies.filter(b=>{const r=Math.hypot(b.x,b.y);return r>14&&r<Math.max(W,H)});
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);ctx.save();ctx.translate(W/2,H/2);
+  const g=ctx.createRadialGradient(0,0,2,0,0,40);g.addColorStop(0,'rgba(255,184,77,.9)');g.addColorStop(1,'rgba(255,184,77,0)');
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,40,0,7);ctx.fill();
+  ctx.fillStyle='#ffb84d';ctx.beginPath();ctx.arc(0,0,9,0,7);ctx.fill();
+  for(const b of bodies){
+    b.t.push([b.x,b.y]);if(b.t.length>70)b.t.shift();
+    ctx.strokeStyle='rgba(120,150,255,.55)';ctx.lineWidth=1.5;ctx.beginPath();
+    b.t.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();
+    ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(b.x,b.y,4,0,7);ctx.fill();
+  }
+  ctx.restore();
+}
+function loop(){if(!paused)for(let i=0;i<4;i++)step(1/240);draw();requestAnimationFrame(loop);}
+
+cv.addEventListener('pointerdown',e=>{const r=cv.getBoundingClientRect();spawn(e.clientX-r.left-W/2,e.clientY-r.top-H/2);if(paused)draw();});
+document.getElementById('g').addEventListener('input',e=>G=+e.target.value);
+const pb=document.getElementById('pause');
+pb.addEventListener('click',()=>{paused=!paused;pb.textContent=paused?'Continuar':'Pausar';});
+document.getElementById('reset').addEventListener('click',reset);
+addEventListener('resize',()=>{resize();});
+resize();reset();
+if(reduce){paused=true;pb.textContent='Iniciar';}
+loop();
+document.getElementById('ano').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
